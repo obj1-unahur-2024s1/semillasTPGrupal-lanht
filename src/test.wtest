@@ -1,0 +1,40 @@
+import plantas.*
+import parcelas.*
+
+describe "test"{
+	const menta1 = new Menta(anioDeObtencion=1999, altura=1)
+	const menta2 = new Menta(anioDeObtencion=1999, altura=0.3)
+	const soja1 = new Soja(anioDeObtencion=2009, altura=0.6)
+	const quinoa1 = new Quinoa(anioDeObtencion=2010, altura=0.6, horasToleradas=12)
+	const quinoa2 = new Quinoa(anioDeObtencion=2001, altura=0.6, horasToleradas=9)
+	const parcela1 = new Parcela(ancho=20,largo=1,horasAlSol=8)
+	
+	test "mentas" {
+		assert.that(menta1.daNuevasSemillas())
+		assert.equals(menta1.espacioQueOcupa(),3)
+		assert.notThat(menta2.daNuevasSemillas())
+		assert.equals(menta2.espacioQueOcupa(),0.9)
+	}
+	test "sojas"{		
+		assert.equals(soja1.horasToleradas(),7)
+		assert.notThat(soja1.daNuevasSemillas())
+		assert.equals(soja1.espacioQueOcupa(),0.3)
+	}
+	test "quinoaa"{
+		assert.notThat(quinoa1.daNuevasSemillas())
+		assert.that(quinoa2.daNuevasSemillas())
+	}
+	test "parcelas"{
+		assert.equals(parcela1.superficie(),20)
+		assert.equals(parcela1.cantidadMaxima(),4)
+		const soja2 = new Soja(anioDeObtencion=2009, altura=1)
+		parcela1.plantarPlanta(soja2)
+		parcela1.plantarPlanta(soja2)
+		parcela1.plantarPlanta(soja2)
+		parcela1.plantarPlanta(soja2)
+		assert.equals(parcela1.plantas().size(),4)
+		parcela1.plantarPlanta(soja2)
+		assert.equals(parcela1.plantas().size(),4)
+	}
+	
+}
