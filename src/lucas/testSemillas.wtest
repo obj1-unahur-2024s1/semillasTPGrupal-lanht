@@ -1,0 +1,34 @@
+import semillas.*
+
+test "menta"{
+	const menta1= new Menta(altura=1, anioSemilla=2024)
+	const menta2= new Menta(altura=0.3,anioSemilla=2024)
+	assert.equals(true,menta1.daNuevasSemillas())
+	assert.equals(3,menta1.cuantoEspacioOcupa())
+	assert.equals(false,menta2.daNuevasSemillas())
+	assert.equals(0.9,menta2.cuantoEspacioOcupa())
+}
+
+test "soja"{
+	const soja1= new Soja(altura=0.6, anioSemilla=2009)
+	assert.equals(7,soja1.horasDeSol())
+	assert.equals(false,soja1.daNuevasSemillas())
+	assert.equals(0.3,soja1.cuantoEspacioOcupa())
+}
+
+test "Quinoa"{
+	const quinoa1= new Quinoa(altura=1, anioSemilla=2010,horasDeSol=12)
+	const quinoa2= new Quinoa(altura=1,anioSemilla=2001,horasDeSol=9)
+	assert.equals(true,quinoa1.daNuevasSemillas())
+	assert.equals(true,quinoa2.daNuevasSemillas())
+}
+
+test "soja transgenica"{
+	const sojaT1= new SojaTransgenica(altura=0.6, anioSemilla=2009)
+	assert.equals(false,sojaT1.daNuevasSemillas())
+}
+
+test "hierbabuena"{
+	const hb1= new Hierbabuena(altura=1,anioSemilla=2024)
+	assert.equals(6,hb1.cuantoEspacioOcupa())
+}

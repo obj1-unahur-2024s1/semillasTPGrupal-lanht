@@ -1,0 +1,15 @@
+import semillas.*
+import Parcelas.*
+
+test "parcela" {
+	const parcela1 = new Parcela(ancho=20,largo=1,horasDeSolP=8)
+	assert.equals(20,parcela1.superficie())
+	assert.equals(4,parcela1.cantidadMaximaPlantas())
+	const soja1 = new Soja(anioSemilla=2009, altura=1)
+	parcela1.plantar(soja1)
+	parcela1.plantar(soja1)
+	parcela1.plantar(soja1)
+	parcela1.plantar(soja1)
+	assert.equals(4,parcela1.plantas().size())
+	//parcela1.plantar(soja1)  //da error asi que esta bien
+}
